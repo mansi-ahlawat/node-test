@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment-stage
+  namespace: stage
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-app-stage
+  template:
+    metadata:
+      labels:
+        app: node-app-stage
+    spec:
+      containers:
+      - name: node-app-stage
+        image: mansiahlawat/node-app:dev-v21
+        ports:
+        - containerPort: 3000

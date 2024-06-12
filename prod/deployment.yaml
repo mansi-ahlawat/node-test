@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment-prod
+  namespace: prod
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-app-prod
+  template:
+    metadata:
+      labels:
+        app: node-app-prod
+    spec:
+      containers:
+      - name: node-app-prod
+        image: mansiahlawat/node-app:dev-v21
+        ports:
+        - containerPort: 3000
